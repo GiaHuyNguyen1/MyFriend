@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:widgets="clr-namespace:App1.Views.Widgets"
+             x:Class="App1.Views.EditFriendView">
+    <ContentPage.Content>
+        <StackLayout Padding="30,20" Spacing="20" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <widgets:CustomEntry Placeholder="Enter Name" Text="{Binding Name, Mode=TwoWay}" />
+            <widgets:CustomEntry Placeholder="Enter Number"  Text="{Binding Number, Mode=TwoWay}" />
+            <widgets:CustomEntry Placeholder="Enter Address" Text="{Binding Address, Mode=TwoWay}" />
+            <widgets:CustomEntry Placeholder="Enter Email" Text="{Binding Email, Mode=TwoWay}"/>
+            <widgets:CustumButton ContentKey="Save" Command="{Binding EditCommand}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

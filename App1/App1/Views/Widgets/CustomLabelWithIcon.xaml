@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:widgets="clr-namespace:App1.Views.Widgets"
+             x:Class="App1.Views.Widgets.CustomLabelWithIcon">
+  <ContentView.Content>
+        <StackLayout Orientation="Horizontal">
+            <Label x:Name="IconFont" Style="{StaticResource IconLabelStyle}"/>
+            <widgets:CustomLabel x:Name="Key" Style="{StaticResource KeyTextStyle}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

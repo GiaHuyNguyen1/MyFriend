@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App1.Views.FriendView"
+             x:Name="MyFriendPage"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:model="clr-namespace:App1.Models"
+             Title="{Binding Title}"
+             xmlns:iconfont="clr-namespace:App1.Resources.Font.IconFont" xmlns:widgets="clr-namespace:App1.Views.Widgets">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding AddCommand}" />
+        <ToolbarItem Text="Scan QR" Command="{Binding ScanQRCommand}"/>
+        <ToolbarItem Text="User" Command="{Binding UserCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <xct:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter" />
+        </ResourceDictionary>
+        <ResourceDictionary>
+            <xct:ItemSelectedEventArgsConverter x:Key="ItemSelectedEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView BackgroundColor="Transparent" 
+                      CachingStrategy="RecycleElement"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="True"
+                      IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                      ItemsSource="{Binding Friend}"
+                      RefreshCommand="{Binding RefeshCommand}"
+                      RefreshControlColor="Red"
+                      SelectionMode="None"  
+                      SeparatorVisibility="None">
+                <ListView.Behaviors>
+                    <xct:EventToCommandBehavior EventName="ItemSelected"
+                                                Command="{Binding SelectedCommand}"        
+                                                EventArgsConverter="{StaticResource ItemSelectedEventArgsConverter}"/>
+                    <xct:EventToCommandBehavior EventName="ItemTapped"
+                                                Command="{Binding TappedCommand}"        
+                                                EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
+                </ListView.Behaviors>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Source={x:Reference MyFriendPage}, Path=BindingContext.RemoveCommand}"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True"
+                                          Text="Delete" />
+                                <MenuItem Command="{Binding Source={x:Reference MyFriendPage}, Path=BindingContext.EditCommand}"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True"
+                                          Text="Edit" />
+                                <MenuItem Command="{Binding Source={x:Reference MyFriendPage}, Path=BindingContext.GetValueCommand}"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True"
+                                          Text="Share" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="10">
+
+                                <Frame CornerRadius="20" HasShadow="True">
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Frame HeightRequest="{StaticResource CircleDiameter}"
+                                               WidthRequest="{StaticResource CircleDiameter}"
+                                               CornerRadius="{StaticResource CircleCornerRadius}"
+                                               Padding="0">
+                                            <widgets:CustomLabel
+                                                Text="{Binding SortName}"       
+                                                VerticalOptions="Center" 
+                                                HorizontalOptions="Center"  
+                                                Style="{StaticResource NameTextStyle}"/>
+                                        </Frame>
+                                        <widgets:CustomLabel 
+                                            Text="{Binding Name}"
+                                            Style="{StaticResource NameTextStyle}"/>
+                                        <widgets:CustomLabel 
+                                            Text="{Binding Number}"
+                                            Style="{StaticResource NumberTextStyle}"/>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:widgets="clr-namespace:App1.Views.Widgets"
+             x:Class="App1.Views.PageLoginView">
+    <ContentPage.Content>
+        <StackLayout Padding="30,20" Spacing="20">
+            <widgets:CustomLabel
+                FontAttributes="Bold"
+                FontSize="25"
+                HorizontalOptions="CenterAndExpand"
+                ContentKey="Title" />
+            <widgets:CustomEntry Placeholder="UserName" Text="{Binding Name, Mode=TwoWay}" />
+            <widgets:CustomEntry
+                Placeholder="Password" IsPassword="True"
+                Text="{Binding Password, Mode=TwoWay}" />
+            <widgets:CustumButton
+                Command="{Binding LoginCommand}" Style="{StaticResource NormalButtonStyle}"
+                ContentKey="SignIn" />
+            <widgets:CustomLabel ContentKey="QuestionCreateAcc" />
+            <widgets:CustumButton
+                Style="{StaticResource SignOutButtonStyle}"
+                Command="{Binding SigupCommand}"
+                ContentKey="CreateOneAccount" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

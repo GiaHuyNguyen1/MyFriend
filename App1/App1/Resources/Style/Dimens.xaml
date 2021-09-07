@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyFriend.Resources.Style.Dimens">
+    <!--Margin-->
+    <x:Double x:Key="SmallMargin">10</x:Double>
+    <x:Double x:Key="SmallLeftRightMargin">30</x:Double>
+    <!--FontSize-->
+    <x:Double x:Key="NormalTextSize">20</x:Double>
+    <x:Double x:Key="BigDescTextSize">40</x:Double>
+    <x:Double x:Key="HeightQR">400</x:Double>
+    <!--Dimens-->
+    <x:Single x:Key="CornerRadius">5</x:Single>
+    <x:Single x:Key="BaseCornerRadius">10</x:Single>
+
+    <x:Double x:Key="CircleDiameter">40</x:Double>
+    <x:Single x:Key="CircleCornerRadius">20</x:Single>
+</ResourceDictionary>

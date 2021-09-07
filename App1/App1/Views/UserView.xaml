@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:iconfont="clr-namespace:App1.Resources.Font.IconFont" xmlns:widgets="clr-namespace:App1.Views.Widgets"
+             x:Class="App1.Views.UserView">
+    <ContentPage.Content>
+        <StackLayout Margin="10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+            <widgets:CustomLabelEntry   
+                TextKey="Name" 
+                Label="{Binding Name,Mode=TwoWay}"    
+                Icon="{x:Static iconfont:IconFont.fi_user_avatar}"/>
+            <widgets:CustomLabelEntry 
+                TextKey="Number" 
+                Label="{Binding Number,Mode=TwoWay}"
+                Icon="{x:Static iconfont:IconFont.fi_call}"/>
+            <widgets:CustomLabelEntry 
+                TextKey="Address"  
+                Label="{Binding Address,Mode=TwoWay}"
+                Icon="{x:Static iconfont:IconFont.fi_earth}"/>
+            <widgets:CustomLabelEntry 
+                TextKey="Email"   
+                Label="{Binding Email,Mode=TwoWay}"
+                Icon="{x:Static iconfont:IconFont.fi_wechat}"/>
+            <widgets:CustumButton ContentKey="Back" Style="{StaticResource NormalButtonStyle}" Command="{Binding BackCommand}" />
+            <widgets:CustumButton ContentKey="Share" Command="{Binding GetValueCommand}" Style="{StaticResource NormalButtonStyle}"/>
+            <widgets:CustumButton ContentKey="Edit" Command="{Binding EditValueCommand}" Style="{StaticResource NormalButtonStyle}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
